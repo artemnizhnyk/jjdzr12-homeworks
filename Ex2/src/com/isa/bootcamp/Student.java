@@ -1,9 +1,13 @@
 package com.isa.bootcamp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
     private String firstName;
     private String surname;
     private Team team;
+    public static List<Student> studentsList = new ArrayList<>();
 
     public Student(String firstName, String surname, Team team) {
         this.firstName = firstName;
@@ -11,12 +15,15 @@ public class Student {
         this.team = team;
     }
 
-    public void showInfoAboutStudent() {
-        System.out.println(this.getFirstName() + " " +
-                this.getSurname() + " należy do zespołu " +
-                this.getTeam().getTeamName() + " który realizuje projekt o nazwie " +
-                this.getTeam().getProject().getProjectName() + ".");
+    public static void showInfoAboutStudents(List<Student> studentsList) {
+        for (Student student : studentsList) {
+            System.out.println(student.getFirstName() + " " +
+                    student.getSurname() + " należy do zespołu " +
+                    student.getTeam().getTeamName() + " który realizuje projekt o nazwie " +
+                    student.getTeam().getProject().getProjectName() + ".");
+        }
     }
+
 
     public String getFirstName() {
         return firstName;
