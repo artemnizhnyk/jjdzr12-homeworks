@@ -63,8 +63,8 @@ public class NumbersConstraints {
                     System.out.println("Ilość liczb do wylosowania ma byc wieksza od zera, podaj inną liczbę");
                     setCountOfNumbers();
                 }
-                if (numberTo - numberFrom < countOfNumbers) {
-                    System.out.println("Ilość liczb do wylosowania ma być nie więsza od " + (numberTo - numberFrom) +
+                if (numberTo - numberFrom+1 < countOfNumbers) {
+                    System.out.println("Ilość liczb do wylosowania ma być nie więsza od " + (numberTo - numberFrom+1) +
                             ". Inaczej liczby mogą sie powtórzyć. Spróbuj jeszcze raz.");
                     setCountOfNumbers();
                 }
