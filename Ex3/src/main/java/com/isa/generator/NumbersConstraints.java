@@ -20,9 +20,13 @@ public class NumbersConstraints {
             System.out.print("Podaj dolny zakres, od którego mam losować: ");
             try {
                 numberFrom = scanner.nextInt();
+                if (numberFrom < 0) {
+                    System.out.println("Dolny zakres ma być wyższy od zera, spróbuj jeszcze raz.");
+                    setNumbersFrom();
+                }
                 break;
             } catch (Exception e) {
-                System.out.println("Wprowadziłeś coś źle, spróbuj jeszcze raz");
+                System.out.println("Wprowadziłeś coś źle, spróbuj jeszcze raz.");
                 setNumbersFrom();
                 break;
             }
@@ -36,12 +40,13 @@ public class NumbersConstraints {
             try {
                 numberTo = scanner.nextInt();
                 if (numberTo < numberFrom) {
-                    System.out.println("Górny zakres nie może być mniejszy od dolnego, podaj liczbę większą od " + numberFrom);
+                    System.out.println("Górny zakres nie może być mniejszy od dolnego, podaj liczbę większą od " +
+                            numberFrom + ". Spróbuj jeszcze raz");
                     setNumbersTo();
                 }
                 break;
             } catch (Exception e) {
-                System.out.println("Wprowadziłeś coś źle, spróbuj jeszcze raz");
+                System.out.println("Wprowadziłeś coś źle, spróbuj jeszcze raz.");
                 setNumbersTo();
                 break;
             }
@@ -58,22 +63,10 @@ public class NumbersConstraints {
                     System.out.println("Ilość liczb do wylosowania ma byc wieksza od zera, podaj inną liczbę");
                     setCountOfNumbers();
                 }
-                if (numberTo - numberFrom <= countOfNumbers * 10) {
-                    Scanner lineScanner = new Scanner(System.in);
-                    System.out.println("Info: zbyt mały zakres, liczby mogą się powtórzyć z dużą wiarygodnością\n" +
-                            "Jeśli chcesz kontynuować wpisz 'y', jeśli chcesz zacząć od nowa wpisz 'n'");
-                    String answer = lineScanner.nextLine();
-                    switch (answer) {
-                        case "y":
-                            break;
-                        case "n":
-                            setNumbersConstraints();
-                        default:
-                            System.out.println("Podałeś coś źle, więc jednak sprubuj podać liczby od nowa");
-                            setNumbersConstraints();
-
-                    }
-
+                if (numberTo - numberFrom < countOfNumbers) {
+                    System.out.println("Ilość liczb do wylosowania ma być nie więsza od " + (numberTo - numberFrom) +
+                            ". Inaczej liczby mogą sie powtórzyć. Spróbuj jeszcze raz.");
+                    setCountOfNumbers();
                 }
                 break;
             } catch (Exception e) {

@@ -1,7 +1,13 @@
 package com.isa.generator;
 
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class NumbersGenerator {
     private static NumbersConstraints constraints = new NumbersConstraints();
+    private static Set<Integer> uniqueNumbers = new HashSet<>();
+    private static Random randomizer = new Random();
 
     public static void generateRandomInts() {
 
@@ -13,10 +19,11 @@ public class NumbersGenerator {
                 constraints.getNumberTo());
         System.out.println("Wylosowane liczby: ");
 
-        for (int i = 0; i < constraints.getCountOfNumbers(); i++) {
-            int randomInt = (int) (Math.random() * (constraints.getNumberFrom() + constraints.getNumberTo()));
-            System.out.println(randomInt);
+        while (!(uniqueNumbers.size() == constraints.getCountOfNumbers())) {
+            int randomInt = randomizer.nextInt(constraints.getNumberTo() - constraints.getNumberFrom()) + constraints.getNumberFrom();
+            uniqueNumbers.add(randomInt);
         }
+        uniqueNumbers.forEach(System.out::println);
     }
 
 
