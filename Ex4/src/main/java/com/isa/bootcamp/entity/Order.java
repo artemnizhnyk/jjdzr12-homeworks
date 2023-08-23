@@ -5,13 +5,14 @@ import java.util.List;
 
 public class Order {
     private Client client;
-    private List<MenuItem> menuItems = new ArrayList<>();;
+    private List<MenuItem> menuItems = new ArrayList<>();
+    ;
 
     public Order(Client client) {
         this.client = client;
     }
 
-    public void addItem(MenuItem menuItem){
+    public void addItem(MenuItem menuItem) {
         menuItems.add(menuItem);
     }
 

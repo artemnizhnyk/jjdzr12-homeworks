@@ -13,9 +13,9 @@ public class Main {
         Client client2 = new Client("Daria", "ul. Piękna 28", "987-654-321");
         Client client3 = new Client("Adam", "ul. Pomorska 1", "111-222-333");
 
-        MenuItem pizza1 = new Pizza( PizzaSize.LARGE, PizzaTypes.PROSCIUTTO);
-        MenuItem pizza2 = new Pizza( PizzaSize.SMALL, PizzaTypes.MARGHERITA);
-        MenuItem pizza3 = new Pizza( PizzaSize.MIDDLE, PizzaTypes.CAPRICCIOSA);
+        MenuItem pizza1 = new Pizza(PizzaSize.LARGE, PizzaTypes.PROSCIUTTO);
+        MenuItem pizza2 = new Pizza(PizzaSize.SMALL, PizzaTypes.MARGHERITA);
+        MenuItem pizza3 = new Pizza(PizzaSize.MIDDLE, PizzaTypes.CAPRICCIOSA);
         MenuItem hamburger = new Burger(BurgerName.HAMBURGER);
         MenuItem cheeseburger = new Burger(BurgerName.CHEESEBURGER);
         MenuItem cola = new Drink(DrinkName.COLA);
