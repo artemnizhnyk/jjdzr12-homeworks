@@ -1,0 +1,66 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.list-group-item.custom-class:not(:last-child) {
+    border: 3px solid #3d0e60;
+    margin-bottom: 10px;
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.title-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: #3b3b71;
+    font-style: italic;
+}
+
+.title-text {
+    font-size: 60px;
+    border: 3px solid violet;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+
+.button-container {
+    margin-top: 30px;
+}
+
+.book-description {
+    font-size: 30px;
+}
+
+.container {
+    max-width: 100%;
+}
+
+.align-self-stretch {
+    margin-right: 20px;
+}
+
+.flying-text {
+    position: absolute;
+    font-size: 70px;
+    color: #67085a;
+    text-transform: uppercase;
+    border: 8px solid #cd15bf;
+    padding: 5px;
+    transform-origin: center;
+    border-radius: 20px;
+}
+
+.full-screen-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}

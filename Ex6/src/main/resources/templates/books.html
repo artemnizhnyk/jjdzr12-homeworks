@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+
+<div th:fragment="content">
+
+    <div class="container-fluid">
+        <div class="container text-center">
+        <h1 class="title-container"><span class="title-text">Books</span></h1>
+        </div>
+        <ul class="list-group">
+            <li th:each="book : ${booksList}" class="list-group-item custom-class">
+                <div class="row">
+                    <div class="col"><strong>Author:</strong> <span th:text="${book.author}"></span></div>
+                    <div class="col"><strong>Title:</strong> <span th:text="${book.title}"></span></div>
+                    <div class="col"><strong>Category:</strong> <span th:text="${book.category().getDisplayName()}"></span></div>
+                    <div class="col"><strong>Count of pages:</strong> <span th:text="${book.pageCount}"></span></div>
+                    <div class="col"><strong>Does suit for kids?</strong> <span th:text="${book.forKids} ? 'Yes' : 'No'"></span></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+</body>
+</html>

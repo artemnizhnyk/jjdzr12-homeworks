@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="content">
+
+    <div class="center-container">
+        <div class="container text-center">
+            <h1 class="title-container"><span class="title-text">Book for Today</span></h1>
+            <div class="row">
+                <div class="col book-description">
+                    <strong>Author:</strong> <span th:text="${randomBook.author}"></span><br>
+                    <strong>Title:</strong> <span th:text="${randomBook.title}"></span><br>
+                    <strong>Category:</strong> <span th:text="${randomBook.category().getDisplayName()}"></span><br>
+                    <strong>Count of pages:</strong> <span th:text="${randomBook.pageCount}"></span><br>
+                    <strong>Does suit for kids?</strong> <span
+                        th:text="${randomBook.forKids} ? 'Yes' : 'No'"></span><br>
+                </div>
+            </div>
+            <div class="row button-container">
+                <div class="col">
+                    <a href="/book-for-today" class="btn btn-primary">Another</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
