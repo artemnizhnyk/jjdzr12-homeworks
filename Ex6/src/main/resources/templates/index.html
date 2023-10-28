@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="content">
+    <div>
+        <div class="flying-text">Books</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const flyingText = $(".flying-text");
+        const screenWidth = $(window).width();
+        const screenHeight = $(window).height();
+        let posX = 0;
+        let posY = 0;
+        let angle = 45;
+        let speedX = 0.01 * Math.cos(angle * (Math.PI / 180));
+        let speedY = 0.01 * Math.sin(angle * (Math.PI / 180));
+        let rotation = 0;
+
+        function updatePosition() {
+            posX += speedX;
+            posY += speedY;
+
+            if (posX <= 0 || posX + flyingText.width() >= screenWidth) {
+                speedX *= -1;
+            }
+
+            if (posY <= 0 || posY + flyingText.height() >= screenHeight) {
+                speedY *= -1;
+            }
+
+            flyingText.css({
+                "transform": `translate(${posX}px, ${posY}px) rotate(${rotation}deg)`
+            });
+
+            requestAnimationFrame(updatePosition);
+        }
+
+        setInterval(() => {
+            updatePosition();
+        }, 50);
+    </script>
+</div>
+
+</body>
+</html>
