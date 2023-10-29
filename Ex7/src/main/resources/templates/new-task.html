@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="content" >
+
+    <video th:fragment="video" src="/images/background.mp4" type="video/mp4" autoplay muted loop></video>
+
+    <div class="card card-form">
+        <div class="card-body">
+            <h5 class="card-title" style="color: #ffffff">TO DO</h5>
+            <p class="card-text">
+            <form th:action="@{/}" th:object="${editTask}" method="post">
+
+                <div class="row mb-3">
+                    <input type="hidden" th:field="*{id}">
+                    <label for="floatingTextarea" class="col-sm-2 col-form-label">Task Description</label>
+                    <div class="col-sm-10">
+                        <textarea th:field="*{description}" class="form-control" required placeholder="Type something"
+                                  id="floatingTextarea"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputPriority" class="col-sm-2 col-form-label">Priority<br>(from 1 to 5)</label>
+                    <div class="col-sm-10">
+                        <input th:field="*{priority}" required min="1" max="5" type="number" class="form-control"
+                               id="inputPriority">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="category" class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-10">
+                        <select th:field="*{category}" class="form-select form-select-lg mb-3"
+                                aria-label=".form-select-lg example" id="category">
+                            <option th:each="category : ${categories}" th:value="${category}"
+                                    th:text="${category.displayName}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="datepicker" class="col-sm-2 col-form-label">Deadline</label>
+                    <div class="col-sm-10">
+                        <input th:field="*{deadline}" id="datepicker" width="350" required type="date" th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"/>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-10 offset-sm-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck1" required>
+                            <label class="form-check-label" for="gridCheck1">
+                                Aren't you a robot?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

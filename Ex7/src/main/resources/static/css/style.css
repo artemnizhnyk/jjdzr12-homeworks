@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Michroma&display=swap');
+
+body {
+    font-family: Michroma, serif;
+    background: linear-gradient(90deg, #2a1831 0%, #a136e8 100%);
+}
+
+.navbar {
+    font-size: 2.1rem;
+    background: linear-gradient(90deg, #2a1831 0%, #a136e8 100%);
+    border: solid;
+    border-radius: 40px;
+    border: #b577de;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.col-lg-10 {
+    justify-content: center;
+}
+
+.side-container {
+    width: 2%;
+
+}
+
+.container-center {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    margin-inline: 0;
+    justify-content: center;
+}
+
+
+.card {
+    font-size: 1.5rem;
+    padding-top: 2px;
+    margin-top: 5px;
+    box-shadow: 9px 7px 10px 1px #000000;
+    background: linear-gradient(270deg, #f4e8f8c3 0%, #b577de 100%);
+    color:#1f1c1c ;
+    border-radius: 15px;
+}
+
+.card img {
+    border-radius: 15px;
+}
+
+.card-body p {
+    color: #000000;
+    font-size: 1.7rem;
+}
+.card-body h5 {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+
+}
+
+.card-body>.card-text {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.nav-link {
+    color: rgb(188, 125, 207);
+    border-radius: 40px;
+}
+
+.nav-link:hover {
+    background-color: rgb(186, 111, 209);
+    border-radius: 40px;
+}
+
+.navbar-nav .nav-link.active {
+    color:rgb(229, 189, 255);
+}
+
+.navbar-brand img {
+    width: 70px;
+}
+
+.navbar-toggler {
+    background-color: rgb(219, 103, 255);
+}
+
+.sidebar {
+    padding-top: 10px;
+    color: rgb(0, 0, 0);
+    background: linear-gradient(270deg, #f4e8f8c3 0%, #c38fe6 100%);
+    border-radius: 20px;
+
+}
+
+.sidebar a {
+    font-size: 1.2em;
+    text-decoration: dotted;
+    color:#5c0e8c;
+    border: solid;
+    border-radius: 20px;
+    border-color: #c38fe6;
+    background-color: #c38fe6;
+    padding-inline: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #cb41ed;
+}
+
+.card a {
+    text-decoration: none;
+    color: #ffffff;
+
+}
+
+.slide-text {
+    color: rgb(233, 203, 243);
+    font-size: 1.4em;
+    padding-top: 30px;
+    margin: auto auto;
+
+}
+
+.row .w-100 {
+    border-radius: 80px;
+}
+
+.card-title a {
+    color: #f7d9f7;
+    font-size: 1.1em;
+}
+
+.footer-text {
+    color: rgb(233, 203, 243);
+    font-size: 1.2em;
+    padding-top: 5px;
+}
+
+.container-fluid>.row {
+    margin-top: 10px;
+}
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #2a1831 0%, #a136e8 100%);
+    border: solid;
+    border: #b577de;
+    border-radius: 40px;
+}
+
+footer .container-fluid {
+    justify-content: space-between;
+}
+
+footer p {
+    margin-bottom: 3px;
+}
+
+
+footer a {
+    text-decoration: none;
+    color: rgb(188, 125, 207);
+    padding-inline: 5px;
+}
+footer a:hover {
+    text-decoration: none;
+    color: rgb(48, 2, 35);
+    padding-inline: 5px;
+}
+
+.card-form {
+    margin-top: 4rem;
+    margin-inline: 8rem;
+}
+
+
