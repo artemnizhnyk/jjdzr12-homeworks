@@ -10,46 +10,42 @@
 
     <video th:fragment="video" src="/images/background.mp4" type="video/mp4" autoplay muted loop></video>
 
-
-    <div class="row">
-
-        <div class="col-lg-11">
-            <div class="row">
+    <div class="col-lg-11">
+        <div class="row">
 
 
-                <div th:each="task : ${allTasks}" class="col-lg-3 col-md-3 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">To Do Task - #<span th:text="${task.id}"></span></h5>
-                            <p>Description:<br> <span th:text="${task.description}"></span></p>
-                            <p class="card-text">Priority = <span th:text="${task.priority}"></span> | Category:
-                                <span
-                                        th:text="${task.category}"></span></p>
-                            <p class="card-text">Deadline: <span th:text="${task.deadline}"></span></p>
+            <div th:each="task : ${allTasks}" class="col-lg-3 col-md-3 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">To Do Task - #<span th:text="${task.id}"></span></h5>
+                        <p>Description:<br> <span th:text="${task.description}"></span></p>
+                        <p class="card-text">Priority = <span th:text="${task.priority}"></span> | Category:
+                            <span
+                                    th:text="${task.category}"></span></p>
+                        <p class="card-text">Deadline: <span th:text="${task.deadline}"></span></p>
 
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-7 col-md-12">
-                                        <a th:href=" @{/new-task/{id}(id=${task.id})}"
-                                           class="btn btn-primary">Edit</a>
-                                    </div>
-                                    <div class="col-lg-5 col-md-12">
-                                        <form th:action="@{/deleteTask}" method="post">
-                                            <input type="hidden" name="id" th:value="${task.id}"/>
-                                            <button type="submit" class="btn btn-primary" id="delete">Delete <input
-                                                    class="form-check-input" type="checkbox" required></button>
-                                        </form>
-                                    </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-7 col-md-12">
+                                    <a th:href=" @{/new-task/{id}(id=${task.id})}"
+                                       class="btn btn-primary">Edit</a>
+                                </div>
+                                <div class="col-lg-5 col-md-12">
+                                    <form th:action="@{/deleteTask}" method="post">
+                                        <input type="hidden" name="id" th:value="${task.id}"/>
+                                        <button type="submit" class="btn btn-primary" id="delete">Delete <input
+                                                class="form-check-input" type="checkbox" required></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
+
 </div>
 
 
