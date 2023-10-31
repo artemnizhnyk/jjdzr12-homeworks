@@ -1,0 +1,11 @@
+spring:
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+  datasource:
+    url: jdbc:mysql://83.25.13.206:3306/to_do?useSSL=false&serverTimezone=UTC
+    username: bestuser
+    password: bestuser

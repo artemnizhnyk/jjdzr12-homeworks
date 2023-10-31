@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @AllArgsConstructor
@@ -51,7 +53,7 @@ public class BookController {
         if (searchQuery.isEmpty()) {
             return "redirect:/books/noBooks";
         }
-        return "redirect:/books/" + searchQuery;
+        return "redirect:/books/" + URLEncoder.encode(searchQuery, StandardCharsets.UTF_8);
     }
 
     @GetMapping("/artem-hyena-face")
