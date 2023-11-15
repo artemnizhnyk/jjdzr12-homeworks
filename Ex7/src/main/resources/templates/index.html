@@ -21,7 +21,7 @@
                         <p>Description:<br> <span th:text="${task.description}"></span></p>
                         <p class="card-text">Priority = <span th:text="${task.priority}"></span> | Category:
                             <span
-                                    th:text="${task.category}"></span></p>
+                                    th:text="${task.getCategory().getDisplayName()}"></span></p>
                         <p class="card-text">Deadline: <span th:text="${task.deadline}"></span></p>
 
                         <div class="container-fluid">
