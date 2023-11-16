@@ -68,7 +68,7 @@ public class TaskManager {
 
     private List<Task> filterByPhrase(List<Task> tasks, String phrase) {
         return tasks.stream()
-                .filter(it -> it.getDescription().contains(phrase.toLowerCase()))
+                .filter(it -> it.getDescription().toLowerCase().contains(phrase.toLowerCase()))
                 .toList();
     }
 
@@ -76,7 +76,7 @@ public class TaskManager {
         return tasks.stream()
                 .min((task1, task2) -> {
                     if (task1.getDeadline().isEqual(task2.getDeadline())) {
-                        return Integer.compare(task2.getPriority(), task1.getPriority());
+                        return Integer.compare(task1.getPriority(), task2.getPriority());
                     } else {
                         return task1.getDeadline().compareTo(task2.getDeadline());
                     }
