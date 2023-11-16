@@ -13,27 +13,49 @@
 <body>
 
 <nav th:fragment="navbar" class="navbar navbar-expand-lg bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="/images/anyLogo.png" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/new-task/0">Add Task</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="/images/anyLogo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/new-task/0">Add Task</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+
+
+        <form class="d-flex padding-right" th:action="@{/}" th:object="${selectedCondition}" method="get">
+
+            <label class="nav-text" for="dropdown">Condition:</label>
+
+            <select th:field="*{sortOrFilterOption}" class="form-select-lg font-size"
+                    aria-label=".form-select-lg example" id="dropdown" name="condition">
+                <option th:each="option : ${sortOrFilterOptions}"
+                        th:text="${option.displayName}" th:value="${option}"></option>
+            </select>
+
+            <button class="nav-link active submit-left-margin" type="submit">Submit</button>
+
+        </form>
+
+        <form class="d-flex" role="search" th:action="@{/}" method="get">
+            <input class="nav-text navbar-brand" name="sortOrFilterOption" type="search" placeholder="enter the description"
+                   aria-label="Search">
+            <button class="nav-link active" type="submit">Search</button>
+        </form>
+
+    </div>
+</nav>
 
 <footer th:fragment="footer" class="footer-any">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 footer-text text-center">
-              <p>Designed by Artem Nizhnyk - IT Master 3000</p>
+                <p>Designed by Artem Nizhnyk - IT Master 3000</p>
             </div>
         </div>
     </div>
@@ -42,5 +64,6 @@
 </footer>
 
 <script th:fragment="script" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>
