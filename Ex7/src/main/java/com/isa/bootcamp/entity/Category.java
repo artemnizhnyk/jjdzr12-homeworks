@@ -4,7 +4,7 @@ public enum Category {
 
     HOME("Home"),
     WORK("Work"),
-    SELF_CARE("Self care"),
+    SELF_CARE("Self-care"),
     SPORT("Sport");
 
     private String displayName;

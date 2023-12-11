@@ -65,8 +65,19 @@ body {
 }
 
 .nav-link {
-    color: rgb(188, 125, 207);
     border-radius: 40px;
+    color:rgb(229, 189, 255);
+}
+.padding-right {
+    padding-right: 110px;
+}
+
+.submit-left-margin {
+    margin-left: 15px;
+}
+
+.font-size {
+    font-size: 1.25rem;
 }
 
 .nav-link:hover {
@@ -84,6 +95,11 @@ body {
 
 .navbar-toggler {
     background-color: rgb(219, 103, 255);
+}
+
+.nav-text {
+    color:rgb(229, 189, 255);
+    border-radius: 40px;
 }
 
 .sidebar {

@@ -11,8 +11,8 @@
     <video th:fragment="video" src="/images/background.mp4" type="video/mp4" autoplay muted loop></video>
 
     <div class="col-lg-11">
-        <div class="row">
 
+        <div class="row">
 
             <div th:each="task : ${allTasks}" class="col-lg-3 col-md-3 mt-4">
                 <div class="card">
@@ -21,7 +21,7 @@
                         <p>Description:<br> <span th:text="${task.description}"></span></p>
                         <p class="card-text">Priority = <span th:text="${task.priority}"></span> | Category:
                             <span
-                                    th:text="${task.category}"></span></p>
+                                    th:text="${task.getCategory().getDisplayName()}"></span></p>
                         <p class="card-text">Deadline: <span th:text="${task.deadline}"></span></p>
 
                         <div class="container-fluid">
