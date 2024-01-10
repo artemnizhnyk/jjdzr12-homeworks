@@ -5,14 +5,12 @@ import com.isa.bootcamp.entity.SortOrFilterOption;
 import com.isa.bootcamp.entity.Task;
 import com.isa.bootcamp.repository.TaskRepository;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -22,7 +20,6 @@ public class ToDoService {
 
     private final TaskRepository taskRepository;
     private final TaskManager taskManager;
-    private SelectedCondition selectedCondition;
 
     public ToDoService(final TaskRepository taskRepository, final TaskManager taskManager) {
         this.taskRepository = taskRepository;
@@ -53,5 +50,13 @@ public class ToDoService {
 
     public SelectedCondition getSelectedCondition(String condition) {
        return new SelectedCondition(Enum.valueOf(SortOrFilterOption.class, condition));
+    }
+
+    public boolean isNotDefaultSortOrFilterOption(final String sortOrFilterOption) {
+        return Arrays.stream(SortOrFilterOption.values()).map(it -> it.name()).toList().contains(sortOrFilterOption);
+    }
+
+    public List<Task> getTasks(final String sortOrFilterOption) {
+        return this.sortOrFilter(sortOrFilterOption);
     }
 }

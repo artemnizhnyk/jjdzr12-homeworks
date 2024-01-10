@@ -20,22 +20,19 @@ public class ToDoController {
 
     @GetMapping("/")
     public String showAllTasks(Model model, @RequestParam(defaultValue = "DEFAULT") String sortOrFilterOption) {
-        if (Arrays.stream(SortOrFilterOption.values()).map(it->it.name()).toList().contains(sortOrFilterOption)) {
+        if (service.isNotDefaultSortOrFilterOption(sortOrFilterOption)) {
             model.addAttribute("selectedCondition", service.getSelectedCondition(sortOrFilterOption));
         } else {
-            model.addAttribute("selectedCondition", service.getSelectedCondition("DEFAULT"));
+            model.addAttribute("selectedCondition", service.getSelectedCondition(SortOrFilterOption.DEFAULT.toString()));
         }
         model.addAttribute("sortOrFilterOptions", SortOrFilterOption.values());
-        List<Task> allTasks;
-        if (!sortOrFilterOption.equals("DEFAULT")) {
-            allTasks = service.sortOrFilter(sortOrFilterOption);
-        } else {
-            allTasks = service.getAllTasks();
-        }
+        List<Task> allTasks = service.getTasks(sortOrFilterOption);
         model.addAttribute("allTasks", allTasks);
         model.addAttribute("content", "index");
         return "main";
     }
+
+
 
     @PostMapping("/")
     public String showAllTasksPost(@ModelAttribute Task task) {
@@ -48,7 +45,7 @@ public class ToDoController {
         if (Arrays.stream(SortOrFilterOption.values()).toList().contains(sortOrFilterOption)) {
             model.addAttribute("selectedCondition", service.getSelectedCondition(sortOrFilterOption));
         } else {
-            model.addAttribute("selectedCondition", service.getSelectedCondition("DEFAULT"));
+            model.addAttribute("selectedCondition", service.getSelectedCondition(SortOrFilterOption.DEFAULT.toString()));
         }
         model.addAttribute("sortOrFilterOptions", SortOrFilterOption.values());
         Task task = service.getTaskById(id);

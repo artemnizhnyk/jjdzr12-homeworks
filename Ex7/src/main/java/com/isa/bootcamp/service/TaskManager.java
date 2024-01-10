@@ -14,10 +14,13 @@ public class TaskManager {
 
 
     public List<Task> sortOrFilterByCondition(final String condition, List<Task> tasks) {
+        if (condition == null) {
+            return new ArrayList<>();
+        }
         if (condition.isBlank()) {
             return tasks;
         }
-        if (!Arrays.stream(SortOrFilterOption.values()).map(it->it.name()).toList().contains(condition)) {
+        if (!Arrays.stream(SortOrFilterOption.values()).map(it -> it.name()).toList().contains(condition)) {
             return filterByPhrase(tasks, condition);
         } else {
             SortOrFilterOption sortOrFilterOption = Enum.valueOf(SortOrFilterOption.class, condition);
@@ -37,68 +40,91 @@ public class TaskManager {
     }
 
     private List<Task> filterByMaxPriority(List<Task> tasks) {
+        if (tasks == null) {
+            return new ArrayList<>();
+        }
         return tasks.stream()
                 .filter(it -> it.getPriority() == 1)
                 .toList();
     }
 
     private List<Task> filterWithNextDayCondition(List<Task> tasks) {
+        if (tasks == null) {
+            return new ArrayList<>();
+        }
         return tasks.stream()
                 .filter(it -> it.getDeadline().equals(LocalDate.now().plusDays(1)))
                 .toList();
     }
 
     private List<Task> sortFromMaxToMinPriority(List<Task> tasks) {
+        if (tasks == null) {
+            return new ArrayList<>();
+        }
         return tasks.stream()
                 .sorted(Comparator.comparing(Task::getPriority))
                 .toList();
     }
 
     private List<Task> sortFromNearestToLatestDate(List<Task> tasks) {
+        if (tasks == null) {
+            return new ArrayList<>();
+        }
         return tasks.stream()
                 .sorted(Comparator.comparing(Task::getDeadline))
                 .toList();
     }
 
     private List<Task> filterBySelectedCategory(List<Task> tasks, Category category) {
+        if (tasks == null) {
+            return new ArrayList<>();
+        }
         return tasks.stream()
                 .filter(it -> it.getCategory().equals(category))
                 .toList();
     }
 
     private List<Task> filterByPhrase(List<Task> tasks, String phrase) {
+        if (tasks == null || phrase == null) {
+            return new ArrayList<>();
+        }
         return tasks.stream()
                 .filter(it -> it.getDescription().toLowerCase().contains(phrase.toLowerCase()))
                 .toList();
     }
 
     private List<Task> findTheMostImportantTask(List<Task> tasks) {
+        if (tasks == null) {
+            return new ArrayList<>();
+        }
         return tasks.stream()
-                .min((task1, task2) -> {
-                    if (task1.getDeadline().isEqual(task2.getDeadline())) {
-                        return Integer.compare(task1.getPriority(), task2.getPriority());
-                    } else {
-                        return task1.getDeadline().compareTo(task2.getDeadline());
-                    }
-                }).map(Collections::singletonList)
+                .min(Comparator.comparing(Task::getDeadline).thenComparing(Task::getPriority))
+                .map(Collections::singletonList)
                 .orElseGet(Collections::emptyList);
     }
 
     private Map<Category, List<Task>> getMapOfTasksByCategory(List<Task> tasks) {
+        if (tasks == null || tasks.isEmpty()) {
+            return Collections.emptyMap();
+        }
         return tasks.stream()
                 .collect(Collectors.groupingBy(Task::getCategory));
     }
 
     private Map<Integer, List<Task>> getMapOfTasksByPriority(List<Task> tasks) {
+        if (tasks == null || tasks.isEmpty()) {
+            return Collections.emptyMap();
+        }
         return tasks.stream()
                 .collect(Collectors.groupingBy(Task::getPriority));
     }
 
     private Map<Category, Optional<Task>> getMapOfTheMostImportantTasksByCategory(List<Task> tasks) {
+        if (tasks == null || tasks.isEmpty()) {
+            return Collections.emptyMap();
+        }
         return tasks.stream()
                 .collect(Collectors.groupingBy(Task::getCategory,
-                        Collectors.minBy(Comparator.comparing(Task::getPriority))))
-                .entrySet().stream()
-                .collect(Collectors.toMap((it -> it.getKey()), entry -> entry.getValue()));
+                        Collectors.minBy(Comparator.comparing(Task::getPriority))));
     }
 }
