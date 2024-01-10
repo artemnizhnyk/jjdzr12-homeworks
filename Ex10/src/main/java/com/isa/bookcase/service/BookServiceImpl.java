@@ -7,7 +7,6 @@ import com.isa.bookcase.model.Author;
 import com.isa.bookcase.model.Book;
 import com.isa.bookcase.repository.AuthorRepository;
 import com.isa.bookcase.repository.BookRepository;
-import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

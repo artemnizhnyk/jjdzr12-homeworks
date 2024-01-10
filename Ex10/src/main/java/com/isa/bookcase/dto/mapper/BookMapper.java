@@ -1,7 +1,6 @@
 package com.isa.bookcase.dto.mapper;
 
 import com.isa.bookcase.dto.BookDto;
-import com.isa.bookcase.model.Author;
 import com.isa.bookcase.model.Book;
 import org.springframework.stereotype.Component;
 
