@@ -57,7 +57,7 @@ class TaskManagerTest {
 
     static Stream<Arguments> getFilterWithNextDayConditionArguments() {
         return Stream.of(
-                Arguments.of(getTasks(), List.of(getTasks().get(0), getTasks().get(1))),
+                Arguments.of(getTasks(), List.of(getTasks().get(3), getTasks().get(4))),
                 Arguments.of(new ArrayList<>(), new ArrayList<>()),
                 Arguments.of(null, new ArrayList<Task>())
         );
