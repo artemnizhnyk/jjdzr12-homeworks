@@ -7,6 +7,7 @@ import com.isa.bookcase.model.Author;
 import com.isa.bookcase.model.Book;
 import com.isa.bookcase.repository.AuthorRepository;
 import com.isa.bookcase.repository.BookRepository;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,20 +39,17 @@ class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public void addBook(BookDto bookForm) {
 
-        Optional<Author> author = authorRepository.getAuthorByName(bookForm.getAuthor().trim());
+        Optional<Author> optionalAuthor = authorRepository.findByName(bookForm.getAuthor().trim());
 
-        Author savedAuthor = author.orElseGet(() -> {
-            return authorRepository.saveAndFlush(
-                    Author.builder()
-                            .name(bookForm.getAuthor())
-                            .build());
-        });
+        Author author = optionalAuthor.orElseGet(() -> Author.builder().name(bookForm.getAuthor()).build());
 
         Book book = bookMapper.toEntity(bookForm);
-        book.setAuthor(savedAuthor);
+        book.setAuthor(author);
 
+        authorRepository.save(author);
         bookRepository.save(book);
         log.info("Book \"" + bookForm.getTitle() + "\" was saved in the \"bookcase\" repository");
     }

@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface AuthorRepository extends BaseJpaRepository<Author, Long> {
 
-    Optional<Author> getAuthorByName(String name);
+    Optional<Author> findByName(String name);
 }
